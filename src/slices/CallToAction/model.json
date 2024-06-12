@@ -1,0 +1,44 @@
+{
+  "id": "call_to_action",
+  "type": "SharedSlice",
+  "name": "CallToAction",
+  "description": "CallToAction",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": "Escribe el título para esta sección"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "planlink": {
+          "type": "Link",
+          "config": {
+            "label": "planLink",
+            "placeholder": "Botón para ver los paquetes (planes de pago)",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}
