@@ -6,6 +6,9 @@
 .pnp.js
 .yarn/install-state.gz
 
+# Ignoring .npmrc to prevent conflicts with Vercel's node version management
+.npmrc
+
 # testing
 /coverage
 
