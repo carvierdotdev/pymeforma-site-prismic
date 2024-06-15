@@ -3,6 +3,5 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  call_to_action: dynamic(() => import("./CallToAction")),
   rich_text: dynamic(() => import("./RichText")),
 };

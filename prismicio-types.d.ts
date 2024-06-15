@@ -6,6 +6,8 @@ type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice = RichTextSlice;
 
+type PageDocumentDataSlices1Slice = never;
+
 /**
  * Content for Page documents
  */
@@ -62,6 +64,17 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
+  /**
+   * `slices1` field in *Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices1[]
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices1: prismic.SliceZone<PageDocumentDataSlices1Slice>;
 }
 
 /**
@@ -77,71 +90,6 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes = PageDocument;
-
-/**
- * Primary content in *CallToAction → Items*
- */
-export interface CallToActionSliceDefaultItem {
-  /**
-   * title field in *CallToAction → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Escribe el titulo para esta seccion
-   * - **API ID Path**: call_to_action.items[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * description field in *CallToAction → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.items[].description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * planLink field in *CallToAction → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Boton para ver los paquetes (planes de pago)
-   * - **API ID Path**: call_to_action.items[].planlink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  planlink: prismic.LinkField;
-}
-
-/**
- * Default variation for CallToAction Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CallToActionSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  Simplify<CallToActionSliceDefaultItem>
->;
-
-/**
- * Slice variation for *CallToAction*
- */
-type CallToActionSliceVariation = CallToActionSliceDefault;
-
-/**
- * CallToAction Shared Slice
- *
- * - **API ID**: `call_to_action`
- * - **Description**: CallToAction
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CallToActionSlice = prismic.SharedSlice<
-  "call_to_action",
-  CallToActionSliceVariation
->;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -201,11 +149,8 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      PageDocumentDataSlices1Slice,
       AllDocumentTypes,
-      CallToActionSlice,
-      CallToActionSliceDefaultItem,
-      CallToActionSliceVariation,
-      CallToActionSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
