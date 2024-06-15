@@ -1,7 +1,7 @@
 import { repositoryName } from "@/prismicio";
 import { PrismicPreview } from "@prismicio/next";
 import { Metadata } from "next";
-import "./globals.css";
+import "./global/globals.css";
 
 export const metadata: Metadata = {
   title: "Pymeforma Studio - Marketing y Copywriting",
